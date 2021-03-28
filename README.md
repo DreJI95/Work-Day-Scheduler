@@ -24,6 +24,11 @@
 - THEN the saved events persist
 
 **References:** 
+dayjs CDN: https://cdnjs.com/libraries/dayjs
+dayjs API guide: https://www.npmjs.com/package/dayjs
+$.each jQuery guide: https://api.jquery.com/jquery.each/
+$.extend jQuery guide: https://api.jquery.com/jquery.extend/
+load event jQuery: https://api.jquery.com/load-event/
 
 **Live webpage link:**
 
