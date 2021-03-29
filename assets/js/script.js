@@ -17,7 +17,7 @@ var loadEvents = function () {
 
     //Update to store blank plan description, hour, date and id if the local storage array value is null
     if (!planArray) {
-        loadPlanner();
+        loadHourPlanArray(); 
     }
     else
     {
@@ -77,7 +77,7 @@ loadPlanner(); //Create page elements for the time block container
 var saveEvents = function (id) {
 
     var planArray = JSON.parse(localStorage.getItem("plansArrayStorage"));
-    planArray[id] = hourlyPlanArray[id];
+    planArray = hourlyPlanArray;
     localStorage.setItem("plansArrayStorage",JSON.stringify(planArray));
 }//saves current element for the description associated with the column button to local storage
 
