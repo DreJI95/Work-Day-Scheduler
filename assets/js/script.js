@@ -10,7 +10,7 @@ var loadHourPlanArray = function ()
     }
 
 }
-loadHourPlanArray();
+loadHourPlanArray(); //Loads page time blocks array
 
 var loadEvents = function () {  
     var planArray = JSON.parse(localStorage.getItem("plansArrayStorage"));
@@ -28,7 +28,7 @@ var loadEvents = function () {
         }
     }
 }
-loadEvents();
+loadEvents(); //loads saved plans from local storage
 
 var loadPlanner = function ()
 {
@@ -68,22 +68,24 @@ var loadPlanner = function ()
     }
     $(".container").append(hourRow);
 };
-loadPlanner();
+loadPlanner(); //Create page elements for the time block container
 
-var saveEvents = function () {
-    localStorage.setItem("plansArrayStorage",JSON.stringify(hourlyPlanArray));
-}
+var saveEvents = function (id) {
+
+    var planArray = JSON.parse(localStorage.getItem("plansArrayStorage"));
+    planArray[id] = hourlyPlanArray[id];
+    localStorage.setItem("plansArrayStorage",JSON.stringify(planArray));
+}//saves current page content to the local storage
 
 $(".saveBtn").on("click",(function(){
     for (var i = 0; i < 9; i++) {
         if ($(this).attr("id") === ("plan"+i)){
         hourlyPlanArray[i].plan = $(".plan-description"+i).val();
+        saveEvents(i);
         }
-    }
-
-    saveEvents();
-}));
+    }    
+})); //save button event listener
 
 $(".description").on("click",(function(){
     $(this).trigger("focus");
-}));
+})); //plan description focus event listener
