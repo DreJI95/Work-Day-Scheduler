@@ -1,21 +1,16 @@
-var plansArrayStorage = []; // stores array that is sent to localStorage
-var plans = { 
-    planDescription: "Lorem",
-    planDate: dayjs().format('{YYYY} MM-DD'),
-    planHour: dayjs().format('HH')
-}; //variable stores events for the day
+var hourlyPlanArray = [] //variable stores page load values
 
-// var i = 0;
+var loadHourPlanArray = function ()
+{
+    //Creates page hour and description empty values
+    for (var i = 0; i < 9; i++){
+        var hour = dayjs().hour(9).add(i,'hour').format('hh:00 a');
+        var plan = "";
+        hourlyPlanArray.push({hour,plan});
+    }
 
-// //For every plan stored int he localStorage, create an object on the page
-// $.each(planArray, function() {
-//     //if (plans.planDate === dayjs().format('{YYYY} MM-DD'))
-//     { 
-//         planArray.push(plans);
-//     }}
-//     );
-
-// console.log(planArray);
+}
+loadHourPlanArray();
 
 var loadPlanner = function ()
 {
@@ -48,38 +43,31 @@ var loadEvents = function () {
     planArray = JSON.parse(localStorage,getItem("plansArrayStorage"));
 
     //Update to store blank plan description, hour, date and id if the local storage array value is null
-    if (!plans) {
-        plans = {
-            planDescription: [],
-            planDate: [],
-            planHour: [],
-        };
+    if (!planArray) {
+        loadPlanner();
     }
-
-    //Creates a plan object and properties when the event planner is opened
-    $.each(plans, function(list, arr) {
-        arr.forEach(function(plans) {
-            createEvent(plans.planHour,planDate,planDescription)
+    {
+        //Creates a plan object and properties when the event planner is opened
+        $.each(planArray, function(list, arr) {
+            arr.forEach(function(plans) {
+                
+            });
         });
-    });
-}
-
-var createEvent = function (planHour, planDate, planDescription)
-{
-
+    }
 }
 
 var saveEvents = function () {
-    
-    localStorage.setItem("plansArrayStorage",JSON.stringify(plans));
+    localStorage.setItem("plansArrayStorage",JSON.stringify(hourlyPlanArray));
 }
 
 $(".saveBtn").on("click",(function(){
     for (var i = 0; i < 9; i++) {
         if ($(this).attr("id") === ("plan"+i)){
-        return ($(".plan-description"+i).val());
+        hourlyPlanArray[i].plan = $(".plan-description"+i).val();
         }
     }
+
+    saveEvents();
 }));
 
 $(".description").on("click",(function(){
