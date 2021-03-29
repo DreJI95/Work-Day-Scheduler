@@ -12,6 +12,24 @@ var loadHourPlanArray = function ()
 }
 loadHourPlanArray();
 
+var loadEvents = function () {  
+    var planArray = JSON.parse(localStorage.getItem("plansArrayStorage"));
+
+    //Update to store blank plan description, hour, date and id if the local storage array value is null
+    if (!planArray) {
+        loadPlanner();
+    }
+    else
+    {
+        //Creates a plan object and properties when the event planner is opened
+        for (var i = 0; i < 9; i++) {
+            hourlyPlanArray[i].hour = planArray[i].hour;
+            hourlyPlanArray[i].plan = planArray[i].plan;
+        }
+    }
+}
+loadEvents();
+
 var loadPlanner = function ()
 {
     $("#currentDay").text(dayjs().format('dddd, MMMM D, YYYY'));
@@ -25,7 +43,7 @@ var loadPlanner = function ()
         var hourCol = $("<div>").addClass("col-sm-2 ml-auto d-flex justify-content-around hour-label"+i+" hour").text(hoursText.format('hh:00 a'));
         hourCol.attr("id","plan"+i);
 
-        var hourInfo = $("<input>").addClass("col-sm-9 description plan-description"+i+" form-control time-block").text("");
+        var hourInfo = $("<input>").addClass("col-sm-9 description plan-description"+i+" form-control time-block").val(hourlyPlanArray[i].plan);
         hourInfo.attr("id","plan"+i);
 
         var hourButton = $("<div>").addClass("col-sm-1 btn-primary save-button"+i+" saveBtn");
@@ -38,23 +56,6 @@ var loadPlanner = function ()
     $(".container").append(hourRow);
 };
 loadPlanner();
-
-var loadEvents = function () {  
-    planArray = JSON.parse(localStorage,getItem("plansArrayStorage"));
-
-    //Update to store blank plan description, hour, date and id if the local storage array value is null
-    if (!planArray) {
-        loadPlanner();
-    }
-    {
-        //Creates a plan object and properties when the event planner is opened
-        $.each(planArray, function(list, arr) {
-            arr.forEach(function(plans) {
-                
-            });
-        });
-    }
-}
 
 var saveEvents = function () {
     localStorage.setItem("plansArrayStorage",JSON.stringify(hourlyPlanArray));
