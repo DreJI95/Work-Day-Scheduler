@@ -36,3 +36,6 @@ Google Material Design icon guide: http://google.github.io/material-design-icons
 **Live webpage link:** https://dreji95.github.io/Work-Day-Scheduler/
 
 **Repository link:** https://github.com/DreJI95/Work-Day-Scheduler
+
+![image1-scheduler](https://user-images.githubusercontent.com/76451565/112784985-f34a0600-9020-11eb-85f5-0519d3171ca0.PNG)
+![image2-scheduler](https://user-images.githubusercontent.com/76451565/112784986-f3e29c80-9020-11eb-94fc-7034c897bd7b.PNG)
