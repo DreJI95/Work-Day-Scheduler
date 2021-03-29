@@ -27,7 +27,6 @@
 dayjs CDN: https://cdnjs.com/libraries/dayjs
 dayjs API guide: https://www.npmjs.com/package/dayjs
 dayjs date format: https://day.js.org/docs/en/display/format
-$.each jQuery guide: https://api.jquery.com/jquery.each/
 load event jQuery: https://api.jquery.com/load-event/
 Bootstrap form layout: https://getbootstrap.com/docs/5.0/forms/layout/
 Bootstrap grid: https://getbootstrap.com/docs/5.0/layout/grid/

@@ -46,6 +46,19 @@ var loadPlanner = function ()
         var hourInfo = $("<input>").addClass("col-sm-9 description plan-description"+i+" form-control time-block").val(hourlyPlanArray[i].plan);
         hourInfo.attr("id","plan"+i);
 
+        if (dayjs().hour() > parseInt(dayjs().hour(9).add(i,'hour').format('h')))
+        {
+            hourInfo.addClass("past");
+        }
+        else if(dayjs().hour() < parseInt(dayjs().hour(9).add(i,'hour').format('h')))
+        { 
+            hourInfo.addClass("future"); 
+        }
+        else
+        { 
+            hourInfo.addClass("present"); 
+        }
+
         var hourButton = $("<div>").addClass("col-sm-1 btn-primary save-button"+i+" saveBtn");
         var hourButtonIcon = $("<span>").addClass("material-icons d-flex justify-content-evenly").text("save");
         hourButton.append(hourButtonIcon);
