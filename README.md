@@ -2,6 +2,7 @@
 #Andre Moseley
 
 **Description:** 
+This calendar appplication allows a user to save events for each hour of their work day. The appplication utilizes third party APIs from Bootstrap, Dayjs & Google Material Icons. This application will save events listed to the user's local storage.
 
 **User Story**
 - AS AN employee with a busy schedule
